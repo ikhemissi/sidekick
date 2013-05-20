@@ -1,0 +1,31 @@
+@(id: Long, rubriquecheckForm: Form[RubriqueCheck])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit rubriquecheck</h1>
+    
+    @form(routes.RubriqueChecks.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(rubriquecheckForm("date"), '_label -> "Date")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.RubriqueChecks.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.RubriqueChecks.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

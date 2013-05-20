@@ -1,0 +1,33 @@
+@(id: Long, userForm: Form[User])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit user</h1>
+    
+    @form(routes.Users.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(userForm("name"), '_label -> "Nom")
+			@inputText(userForm("profile"), '_label -> "Profil")
+			@inputText(userForm("password"), '_label -> "Mot de passe")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Users.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Users.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

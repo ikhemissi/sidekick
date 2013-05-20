@@ -1,0 +1,31 @@
+@(id: Long, applicationForm: Form[Application])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit application</h1>
+    
+    @form(routes.Applications.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(applicationForm("code"), '_label -> "Code")
+            @inputText(applicationForm("client"), '_label -> "Client")
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Applications.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Applications.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

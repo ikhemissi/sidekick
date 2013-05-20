@@ -1,0 +1,31 @@
+@(treatmentForm: Form[Treatment])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Treatments.save()) {
+        
+        <fieldset>
+        
+			@inputText(treatmentForm("code"), '_label -> "Code")
+			@inputText(treatmentForm("menu"), '_label -> "Menu")
+			@inputText(treatmentForm("active"), '_label -> "Actif")
+			@inputText(treatmentForm("creation"), '_label -> "Création")
+			@inputText(treatmentForm("modification"), '_label -> "Modification")
+			@inputText(treatmentForm("versioning"), '_label -> "Version")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Treatments.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

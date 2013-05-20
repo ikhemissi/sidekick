@@ -1,0 +1,31 @@
+@(projectForm: Form[Project])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Projects.save()) {
+        
+        <fieldset>
+        
+            @inputText(projectForm("name"), '_label -> "Nom")
+			@inputText(projectForm("_type"), '_label -> "Type")
+			@inputText(projectForm("exportname"), '_label -> "Nom d'archive")
+			@inputText(projectForm("restart"), '_label -> "Nécessite un redémarrage")
+			@inputText(projectForm("svnroot"), '_label -> "Racine SVN")
+			@inputText(projectForm("projectname"), '_label -> "Nom de projet")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Projects.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

@@ -1,0 +1,34 @@
+@(id: Long, entitlementForm: Form[Entitlement])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit entitlement</h1>
+    
+    @form(routes.Entitlements.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(entitlementForm("operation"), '_label -> "Opération")
+			@inputText(entitlementForm("creation"), '_label -> "Création")
+			@inputText(entitlementForm("modification"), '_label -> "Modification")
+			@inputText(entitlementForm("versioning"), '_label -> "Version")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Entitlements.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Entitlements.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

@@ -1,0 +1,34 @@
+@(id: Long, environmenttypeForm: Form[EnvironmentType])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit environmenttype</h1>
+    
+    @form(routes.EnvironmentTypes.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(environmenttypeForm("name"), '_label -> "Nom")
+			@inputText(environmenttypeForm("rank"), '_label -> "Rang dans le déploiement")
+			@inputText(environmenttypeForm("client"), '_label -> "Client")
+			@inputText(environmenttypeForm("color"), '_label -> "Couleur")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.EnvironmentTypes.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.EnvironmentTypes.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

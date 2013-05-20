@@ -1,0 +1,30 @@
+@(webserverForm: Form[WebServer])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.WebServers.save()) {
+        
+        <fieldset>
+        
+            @inputText(webserverForm("name"), '_label -> "Nom")
+			@inputText(webserverForm("_type"), '_label -> "Type")
+			@inputText(webserverForm("url"), '_label -> "URL")
+			@inputText(webserverForm("path"), '_label -> "Chemin")
+			@inputText(webserverForm("description"), '_label -> "Description")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.WebServers.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

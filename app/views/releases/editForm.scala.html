@@ -1,0 +1,47 @@
+@(id: Long, releaseForm: Form[Release])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+
+    
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>Edition de la release</h3>
+	</div>
+	
+	<div class="modal-body">
+	@form(routes.Releases.update(id), 'class -> "form-horizontal") {
+        
+        <fieldset>
+        
+            @inputText(releaseForm("title"), '_label -> "Libellé")
+			@select(
+                releaseForm("status"), 
+                options(Release.statusOptions), 
+                '_label -> "Statut",
+                '_showConstraints -> false
+            )
+			@inputDate(field = releaseForm("dueDate"), '_label -> "Date")
+            
+			@select(
+                releaseForm("version.id"), 
+                options(Version.options), 
+                '_label -> "Fait partie de",
+                '_showConstraints -> false
+            )
+        
+        </fieldset>
+        
+    }
+	</div>
+	
+	<div class="modal-footer">
+		@form(routes.Releases.delete(id), 'class -> "pull-left") {
+			<input type="submit" value="Supprimer" class="btn btn-danger">
+		}
+		<button type="button" data-dismiss="modal" class="btn">Annuler</button>
+		<input type="submit" value="Sauvegarder" class="btn btn-primary save">
+	</div>
+    

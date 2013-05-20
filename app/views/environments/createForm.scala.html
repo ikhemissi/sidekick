@@ -1,0 +1,27 @@
+@(environmentForm: Form[Environment])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Environments.save()) {
+        
+        <fieldset>
+        
+            @inputText(environmentForm("name"), '_label -> "Nom")
+			@inputText(environmentForm("mq"), '_label -> "MQ")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Environments.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

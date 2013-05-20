@@ -1,0 +1,25 @@
+@(dataForm: Form[Data])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Datas.save()) {
+        
+        <fieldset>
+        
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Datas.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

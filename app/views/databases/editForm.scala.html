@@ -1,0 +1,35 @@
+@(id: Long, databaseForm: Form[Database])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit database</h1>
+    
+    @form(routes.Databases.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(databaseForm("name"), '_label -> "Nom")
+			@inputText(databaseForm("url"), '_label -> "URL")
+			@inputText(databaseForm("user"), '_label -> "Utilisateur")
+			@inputText(databaseForm("password"), '_label -> "Mot de passe")
+			@inputText(databaseForm("enabled"), '_label -> "Activé")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Databases.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Databases.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

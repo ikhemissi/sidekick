@@ -1,0 +1,415 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the computer list
+GET     /                           controllers.App.index()
+
+
+###########################  Applications  ################################
+# Application list (look at the default values for pagination parameters)
+GET     /applications                  controllers.Applications.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add application
+GET     /applications/new              controllers.Applications.create()
+POST    /applications                  controllers.Applications.save()
+
+# Edit existing application
+GET     /applications/:id              controllers.Applications.edit(id:Long)
+POST    /applications/:id              controllers.Applications.update(id:Long)
+
+# Delete a application
+POST    /applications/:id/delete       controllers.Applications.delete(id:Long)
+
+
+
+###########################  Backends  ################################
+# Backend list (look at the default values for pagination parameters)
+GET     /backends                  controllers.Backends.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add backend
+GET     /backends/new              controllers.Backends.create()
+POST    /backends                  controllers.Backends.save()
+
+# Edit existing backend
+GET     /backends/:id              controllers.Backends.edit(id:Long)
+POST    /backends/:id              controllers.Backends.update(id:Long)
+
+# Delete a backend
+POST    /backends/:id/delete       controllers.Backends.delete(id:Long)
+
+
+###########################  Datas  ################################
+# Data list (look at the default values for pagination parameters)
+GET     /datas                  controllers.Datas.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add data
+GET     /datas/new              controllers.Datas.create()
+POST    /datas                  controllers.Datas.save()
+
+# Edit existing data
+GET     /datas/:id              controllers.Datas.edit(id:Long)
+POST    /datas/:id              controllers.Datas.update(id:Long)
+
+# Delete a data
+POST    /datas/:id/delete       controllers.Datas.delete(id:Long)
+
+
+###########################  Databases  ################################
+# Database list (look at the default values for pagination parameters)
+GET     /databases                  controllers.Databases.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add database
+GET     /databases/new              controllers.Databases.create()
+POST    /databases                  controllers.Databases.save()
+
+# Edit existing database
+GET     /databases/:id              controllers.Databases.edit(id:Long)
+POST    /databases/:id              controllers.Databases.update(id:Long)
+
+# Delete a database
+POST    /databases/:id/delete       controllers.Databases.delete(id:Long)
+
+
+###########################  DataCheckEnvironments  ################################
+# DataCheckEnvironment list (look at the default values for pagination parameters)
+GET     /datacheckenvironments                  controllers.DataCheckEnvironments.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add datacheckenvironment
+GET     /datacheckenvironments/new              controllers.DataCheckEnvironments.create()
+POST    /datacheckenvironments                  controllers.DataCheckEnvironments.save()
+
+# Edit existing datacheckenvironment
+GET     /datacheckenvironments/:id              controllers.DataCheckEnvironments.edit(id:Long)
+POST    /datacheckenvironments/:id              controllers.DataCheckEnvironments.update(id:Long)
+
+# Delete a datacheckenvironment
+POST    /datacheckenvironments/:id/delete       controllers.DataCheckEnvironments.delete(id:Long)
+
+
+###########################  Entitlements  ################################
+# Entitlement list (look at the default values for pagination parameters)
+GET     /entitlements                  controllers.Entitlements.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add entitlement
+GET     /entitlements/new              controllers.Entitlements.create()
+POST    /entitlements                  controllers.Entitlements.save()
+
+# Edit existing entitlement
+GET     /entitlements/:id              controllers.Entitlements.edit(id:Long)
+POST    /entitlements/:id              controllers.Entitlements.update(id:Long)
+
+# Delete a entitlement
+POST    /entitlements/:id/delete       controllers.Entitlements.delete(id:Long)
+
+
+###########################  EntitlementChecks  ################################
+# EntitlementCheck list (look at the default values for pagination parameters)
+GET     /entitlementchecks                  controllers.EntitlementChecks.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add entitlementcheck
+GET     /entitlementchecks/new              controllers.EntitlementChecks.create()
+POST    /entitlementchecks                  controllers.EntitlementChecks.save()
+
+# Edit existing entitlementcheck
+GET     /entitlementchecks/:id              controllers.EntitlementChecks.edit(id:Long)
+POST    /entitlementchecks/:id              controllers.EntitlementChecks.update(id:Long)
+
+# Delete a entitlementcheck
+POST    /entitlementchecks/:id/delete       controllers.EntitlementChecks.delete(id:Long)
+
+
+###########################  EntitlementGroups  ################################
+# EntitlementGroup list (look at the default values for pagination parameters)
+GET     /entitlementgroups                  controllers.EntitlementGroups.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add entitlementgroup
+GET     /entitlementgroups/new              controllers.EntitlementGroups.create()
+POST    /entitlementgroups                  controllers.EntitlementGroups.save()
+
+# Edit existing entitlementgroup
+GET     /entitlementgroups/:id              controllers.EntitlementGroups.edit(id:Long)
+POST    /entitlementgroups/:id              controllers.EntitlementGroups.update(id:Long)
+
+# Delete a entitlementgroup
+POST    /entitlementgroups/:id/delete       controllers.EntitlementGroups.delete(id:Long)
+
+
+###########################  EntitlementGroupApplications  ################################
+# EntitlementGroupApplication list (look at the default values for pagination parameters)
+GET     /entitlementgroupapplications                  controllers.EntitlementGroupApplications.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add entitlementgroupapplication
+GET     /entitlementgroupapplications/new              controllers.EntitlementGroupApplications.create()
+POST    /entitlementgroupapplications                  controllers.EntitlementGroupApplications.save()
+
+# Edit existing entitlementgroupapplication
+GET     /entitlementgroupapplications/:id              controllers.EntitlementGroupApplications.edit(id:Long)
+POST    /entitlementgroupapplications/:id              controllers.EntitlementGroupApplications.update(id:Long)
+
+# Delete a entitlementgroupapplication
+POST    /entitlementgroupapplications/:id/delete       controllers.EntitlementGroupApplications.delete(id:Long)
+
+
+###########################  Environments  ################################
+# Environment list (look at the default values for pagination parameters)
+GET     /environments                  controllers.Environments.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add environment
+GET     /environments/new              controllers.Environments.create()
+POST    /environments                  controllers.Environments.save()
+
+# Edit existing environment
+GET     /environments/:id              controllers.Environments.edit(id:Long)
+POST    /environments/:id              controllers.Environments.update(id:Long)
+
+# Delete a environment
+POST    /environments/:id/delete       controllers.Environments.delete(id:Long)
+
+
+###########################  EnvironmentTypes  ################################
+# EnvironmentType list (look at the default values for pagination parameters)
+GET     /environmenttypes                  controllers.EnvironmentTypes.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add environmenttype
+GET     /environmenttypes/new              controllers.EnvironmentTypes.create()
+POST    /environmenttypes                  controllers.EnvironmentTypes.save()
+
+# Edit existing environmenttype
+GET     /environmenttypes/:id              controllers.EnvironmentTypes.edit(id:Long)
+POST    /environmenttypes/:id              controllers.EnvironmentTypes.update(id:Long)
+
+# Delete a environmenttype
+POST    /environmenttypes/:id/delete       controllers.EnvironmentTypes.delete(id:Long)
+
+
+###########################  IBMis  ################################
+# IBMi list (look at the default values for pagination parameters)
+GET     /ibmis                  controllers.IBMis.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add ibmi
+GET     /ibmis/new              controllers.IBMis.create()
+POST    /ibmis                  controllers.IBMis.save()
+
+# Edit existing ibmi
+GET     /ibmis/:id              controllers.IBMis.edit(id:Long)
+POST    /ibmis/:id              controllers.IBMis.update(id:Long)
+
+# Delete a ibmi
+POST    /ibmis/:id/delete       controllers.IBMis.delete(id:Long)
+
+
+###########################  Metrologys  ################################
+# Metrology list (look at the default values for pagination parameters)
+GET     /metrologys                  controllers.Metrologys.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add metrology
+GET     /metrologys/new              controllers.Metrologys.create()
+POST    /metrologys                  controllers.Metrologys.save()
+
+# Edit existing metrology
+GET     /metrologys/:id              controllers.Metrologys.edit(id:Long)
+POST    /metrologys/:id              controllers.Metrologys.update(id:Long)
+
+# Delete a metrology
+POST    /metrologys/:id/delete       controllers.Metrologys.delete(id:Long)
+
+
+###########################  Projects  ################################
+# Project list (look at the default values for pagination parameters)
+GET     /projects                  controllers.Projects.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add project
+GET     /projects/new              controllers.Projects.create()
+POST    /projects                  controllers.Projects.save()
+
+# Edit existing project
+GET     /projects/:id              controllers.Projects.edit(id:Long)
+POST    /projects/:id              controllers.Projects.update(id:Long)
+
+# Delete a project
+POST    /projects/:id/delete       controllers.Projects.delete(id:Long)
+
+
+###########################  ProjectExports  ################################
+# ProjectExport list (look at the default values for pagination parameters)
+GET     /projectexports                  controllers.ProjectExports.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add projectexport
+GET     /projectexports/new              controllers.ProjectExports.create()
+POST    /projectexports                  controllers.ProjectExports.save()
+
+# Edit existing projectexport
+GET     /projectexports/:id              controllers.ProjectExports.edit(id:Long)
+POST    /projectexports/:id              controllers.ProjectExports.update(id:Long)
+
+# Delete a projectexport
+POST    /projectexports/:id/delete       controllers.ProjectExports.delete(id:Long)
+
+
+###########################  Releases  ################################
+# Release list (look at the default values for pagination parameters)
+GET     /releases                  controllers.Releases.list(p:Int ?= 0, s ?= "dueDate", o ?= "desc", f ?= "")
+
+# Add release
+GET     /releases/new              controllers.Releases.create()
+POST    /releases                  controllers.Releases.save()
+
+# Edit existing release
+GET     /releases/:id              controllers.Releases.edit(id:Long)
+POST    /releases/:id              controllers.Releases.update(id:Long)
+
+# Delete a release
+POST    /releases/:id/delete       controllers.Releases.delete(id:Long)
+
+# Add release to a version
+GET     /versions/:version/releases/new              controllers.Releases.createInVersion(version:Long)
+
+###########################  ReverseProxys  ################################
+# ReverseProxy list (look at the default values for pagination parameters)
+GET     /reverseproxys                  controllers.ReverseProxys.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add reverseproxy
+GET     /reverseproxys/new              controllers.ReverseProxys.create()
+POST    /reverseproxys                  controllers.ReverseProxys.save()
+
+# Edit existing reverseproxy
+GET     /reverseproxys/:id              controllers.ReverseProxys.edit(id:Long)
+POST    /reverseproxys/:id              controllers.ReverseProxys.update(id:Long)
+
+# Delete a reverseproxy
+POST    /reverseproxys/:id/delete       controllers.ReverseProxys.delete(id:Long)
+
+
+###########################  Rubriques  ################################
+# Rubrique list (look at the default values for pagination parameters)
+GET     /rubriques                  controllers.Rubriques.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add rubrique
+GET     /rubriques/new              controllers.Rubriques.create()
+POST    /rubriques                  controllers.Rubriques.save()
+
+# Edit existing rubrique
+GET     /rubriques/:id              controllers.Rubriques.edit(id:Long)
+POST    /rubriques/:id              controllers.Rubriques.update(id:Long)
+
+# Delete a rubrique
+POST    /rubriques/:id/delete       controllers.Rubriques.delete(id:Long)
+
+
+###########################  RubriqueChecks  ################################
+# RubriqueCheck list (look at the default values for pagination parameters)
+GET     /rubriquechecks                  controllers.RubriqueChecks.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add rubriquecheck
+GET     /rubriquechecks/new              controllers.RubriqueChecks.create()
+POST    /rubriquechecks                  controllers.RubriqueChecks.save()
+
+# Edit existing rubriquecheck
+GET     /rubriquechecks/:id              controllers.RubriqueChecks.edit(id:Long)
+POST    /rubriquechecks/:id              controllers.RubriqueChecks.update(id:Long)
+
+# Delete a rubriquecheck
+POST    /rubriquechecks/:id/delete       controllers.RubriqueChecks.delete(id:Long)
+
+
+###########################  SVNBranchs  ################################
+# SVNBranch list (look at the default values for pagination parameters)
+GET     /svnbranchs                  controllers.SVNBranchs.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add svnbranch
+GET     /svnbranchs/new              controllers.SVNBranchs.create()
+POST    /svnbranchs                  controllers.SVNBranchs.save()
+
+# Edit existing svnbranch
+GET     /svnbranchs/:id              controllers.SVNBranchs.edit(id:Long)
+POST    /svnbranchs/:id              controllers.SVNBranchs.update(id:Long)
+
+# Delete a svnbranch
+POST    /svnbranchs/:id/delete       controllers.SVNBranchs.delete(id:Long)
+
+
+###########################  Treatments  ################################
+# Treatment list (look at the default values for pagination parameters)
+GET     /treatments                  controllers.Treatments.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add treatment
+GET     /treatments/new              controllers.Treatments.create()
+POST    /treatments                  controllers.Treatments.save()
+
+# Edit existing treatment
+GET     /treatments/:id              controllers.Treatments.edit(id:Long)
+POST    /treatments/:id              controllers.Treatments.update(id:Long)
+
+# Delete a treatment
+POST    /treatments/:id/delete       controllers.Treatments.delete(id:Long)
+
+
+###########################  TreatmentChecks  ################################
+# TreatmentCheck list (look at the default values for pagination parameters)
+GET     /treatmentchecks                  controllers.TreatmentChecks.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add treatmentcheck
+GET     /treatmentchecks/new              controllers.TreatmentChecks.create()
+POST    /treatmentchecks                  controllers.TreatmentChecks.save()
+
+# Edit existing treatmentcheck
+GET     /treatmentchecks/:id              controllers.TreatmentChecks.edit(id:Long)
+POST    /treatmentchecks/:id              controllers.TreatmentChecks.update(id:Long)
+
+# Delete a treatmentcheck
+POST    /treatmentchecks/:id/delete       controllers.TreatmentChecks.delete(id:Long)
+
+
+###########################  Users  ################################
+# User list (look at the default values for pagination parameters)
+GET     /users                  controllers.Users.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add user
+GET     /users/new              controllers.Users.create()
+POST    /users                  controllers.Users.save()
+
+# Edit existing user
+GET     /users/:id              controllers.Users.edit(id:Long)
+POST    /users/:id              controllers.Users.update(id:Long)
+
+# Delete a user
+POST    /users/:id/delete       controllers.Users.delete(id:Long)
+
+
+###########################  Versions  ################################
+# Version list (look at the default values for pagination parameters)
+GET     /versions                  controllers.Versions.list(p:Int ?= 0, s ?= "dueDate", o ?= "desc", f ?= "")
+
+# Add version
+GET     /versions/new              controllers.Versions.create()
+POST    /versions                  controllers.Versions.save()
+
+# Edit existing version
+GET     /versions/:id              controllers.Versions.edit(id:Long)
+POST    /versions/:id              controllers.Versions.update(id:Long)
+
+# Delete a version
+POST    /versions/:id/delete       controllers.Versions.delete(id:Long)
+
+
+###########################  WebServers  ################################
+# WebServer list (look at the default values for pagination parameters)
+GET     /webservers                  controllers.WebServers.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add webserver
+GET     /webservers/new              controllers.WebServers.create()
+POST    /webservers                  controllers.WebServers.save()
+
+# Edit existing webserver
+GET     /webservers/:id              controllers.WebServers.edit(id:Long)
+POST    /webservers/:id              controllers.WebServers.update(id:Long)
+
+# Delete a webserver
+POST    /webservers/:id/delete       controllers.WebServers.delete(id:Long)
+
+
+#########################  Statics  ###################################
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+

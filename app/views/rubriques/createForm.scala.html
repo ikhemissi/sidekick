@@ -1,0 +1,29 @@
+@(rubriqueForm: Form[Rubrique])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Rubriques.save()) {
+        
+        <fieldset>
+        
+            @inputText(rubriqueForm("code"), '_label -> "Code")
+			@inputText(rubriqueForm("pays"), '_label -> "Pays")
+			@inputText(rubriqueForm("invite"), '_label -> "Invite")
+			@inputText(rubriqueForm("versioning"), '_label -> "Version")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Rubriques.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

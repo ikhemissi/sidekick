@@ -1,0 +1,263 @@
+@(currentPage: com.avaje.ebean.Page[Version], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Versions.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+@releaseStatusCSS(status:Int) = @{
+ 
+    var statusLabelCss = ""
+    
+    status match {
+	  case 0 => statusLabelCss = ""
+	  case 1 => statusLabelCss = "label-info"
+	  case 2 => statusLabelCss = "label-info"
+	  case 3 => statusLabelCss = "label-success"
+	  case 4 => statusLabelCss = "label-warning"
+	  case 5 => statusLabelCss = "label-success"
+	  case 6 => statusLabelCss = "label-inverse"
+	  case 7 => statusLabelCss = "label-important"
+	}
+    
+    statusLabelCss
+}
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main {
+    
+	<div class="page-header">
+		<div id="actions">
+			
+			<button type="button" href="@routes.Versions.create()" class="btn btn-small success version"><i class="icon-plus"></i> Ajouter une version</button>
+			
+			<form class="pull-right" action="@link(0, "dueDate")" method="GET">
+				<input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filtrer par nom...">
+				<input type="submit" id="searchsubmit" value="Filtrer" class="btn primary">
+			</form>
+        
+		</div>
+	</div>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert alert-success">
+            <strong>Fait!</strong> @flash.get("success")
+        </div>
+    } 
+
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Rien à afficher</em>
+        </div>
+        
+    } else {
+        
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span2">
+				<!--Sidebar content-->
+				</div>
+				<div class="span10" id="versionList">
+					@for(version <- currentPage.getList) {
+						<div class="accordion-group">
+							<div class="accordion-heading">
+							  <a class="accordion-toggle" data-toggle="collapse-next">
+								<span class="badge badge-inverse code">
+									@if(version.code == null) {
+										<em>-</em>
+									} else {
+										@version.code
+									}
+								</span>
+								<span class="name">
+									@if(version.name == null) {
+										<em>-</em>
+									} else {
+										@version.name
+									}
+								</span>
+								<span class="label label-inverse pull-right date">
+									@if(version.dueDate == null) {
+										<em>-</em>
+									} else {
+										@version.dueDate.format("dd/MM/yyyy")
+									}
+								</span>
+							  </a>
+							</div>
+							<div class="accordion-body collapse in">
+							  <div class="accordion-inner">
+								
+								<div class="row-fluid hero-unit">
+								
+									<p>
+										@if(version.description == null) {
+											<em>-</em>
+										} else {
+											@version.description
+										}
+									</p>
+									<p>
+										<button type="button" href="@routes.Releases.createInVersion(version.id)" class="btn release"><i class="icon-plus"></i> Release</button>
+									</p>
+								  
+								</div>
+								
+								
+								<div class="row-fluid">
+								@if(version.releases == null || version.releases.size == 0) {
+									<em> Aucune release </em>
+								
+								} else {
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												@header("release.dueDate", "Date")
+												@header("release.status", "Etat")
+												@header("release.title", "Titre")
+											</tr>
+										</thead>
+										<tbody>
+										@for(release <- version.releases) {
+											<tr>
+												<td>
+													@if(release.dueDate == null) {
+													<em>-</em>
+													} else {
+														<span class="label label-inverse">
+														@release.dueDate.format("dd/MM/yyyy")
+														</span>
+													}
+													
+													<button type="button" href="@routes.Releases.edit(release.id)" class="btn btn-mini btn-primary release">Web</button>
+													
+												</td>
+												<td>
+													<span class="label @releaseStatusCSS(release.status)">
+														@Release.statusOptions.getOrElse(release.status.toString,"-")
+													</span>
+												</td>
+												<td>
+													<a href="@routes.Releases.edit(release.id)">
+														@if(release.title == null) {
+															<em>-</em>
+														} else {
+															@release.title
+														}
+													</a>
+												</td>
+											</tr>
+										}
+										</tbody>
+									</table>
+								}
+								</div>
+							  </div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+		
+
+        <div id="pagination" class="pagination">
+            <ul>
+                @if(currentPage.hasPrev) {
+                    <li class="prev">
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Précédent</a>
+                    </li>
+                } else {
+                    <li class="prev disabled">
+                        <a>&larr; Précédent</a>
+                    </li>
+                }
+                <li class="current">
+                    <a>Affichage de @currentPage.getDisplayXtoYofZ(" - "," sur ")</a>
+                </li>
+                @if(currentPage.hasNext) {
+                    <li class="next">
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Suivant &rarr;</a>
+                    </li>
+                } else {
+                    <li class="next disabled">
+                        <a>Suivant &rarr;</a>
+                    </li>
+                }
+            </ul>
+        </div>
+		
+    }
+	
+	<div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
+        
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="@routes.Assets.at("javascript/bootstrap-modalmanager.js")"></script>
+<script src="@routes.Assets.at("javascript/bootstrap-modal.js")"></script>
+
+<script type="text/javascript">
+	$('body').on('click.collapse-next.data-api', '[data-toggle=collapse-next]', function() {
+		var $target = $(this).parent().next()
+		$target.data('collapse') ? $target.collapse('toggle') : $target.collapse()    
+	});
+	$(function() {
+		$('.collapse').collapse('hide');
+		
+		// Modal
+		var $modal = $('#ajax-modal');
+	 
+		$('.btn.release,.btn.version').on('click', function(){
+		  // create the backdrop and wait for next modal to be triggered
+		  $('body').modalmanager('loading');
+		   var modalUrl = $(this).attr('href');    
+			setTimeout(function(){
+				$modal.load(modalUrl, '', function(){
+					$modal.modal();
+				});
+			}, 1000);
+		});
+		 
+		$modal.on('click', '.save', function(){
+		  $modal.modal('loading');
+		  setTimeout(function(){
+			var $modalBody = $modal.modal('loading').find('.modal-body');
+				$modalBody.find('form:first').submit();									
+		  }, 1000);
+		});
+    });
+</script>
+            

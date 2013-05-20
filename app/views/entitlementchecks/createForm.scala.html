@@ -1,0 +1,26 @@
+@(entitlementcheckForm: Form[EntitlementCheck])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.EntitlementChecks.save()) {
+        
+        <fieldset>
+        
+            @inputText(entitlementcheckForm("date"), '_label -> "Date")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.EntitlementChecks.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

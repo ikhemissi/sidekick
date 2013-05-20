@@ -1,0 +1,32 @@
+@(id: Long, ibmiForm: Form[IBMi])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit ibmi</h1>
+    
+    @form(routes.IBMis.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(ibmiForm("name"), '_label -> "Nom")
+			@inputText(ibmiForm("iasp"), '_label -> "iASP")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.IBMis.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.IBMis.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

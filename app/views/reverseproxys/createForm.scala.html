@@ -1,0 +1,29 @@
+@(reverseproxyForm: Form[ReverseProxy])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.ReverseProxys.save()) {
+        
+        <fieldset>
+        
+            @inputText(reverseproxyForm("name"), '_label -> "Nom")
+			@inputText(reverseproxyForm("_type"), '_label -> "Type")
+			@inputText(reverseproxyForm("path"), '_label -> "Chemin")
+			@inputText(reverseproxyForm("description"), '_label -> "Description")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.ReverseProxys.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

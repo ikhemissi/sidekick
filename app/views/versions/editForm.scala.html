@@ -1,0 +1,42 @@
+@(id: Long, versionForm: Form[Version])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+    
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>Edition de la version</h3>
+	</div>
+	
+	<div class="modal-body">
+	@form(routes.Versions.update(id), 'class -> "form-horizontal") {
+        
+        <fieldset>
+        
+            @inputText(versionForm("name"), '_label -> "Nom")
+			@inputText(versionForm("code"), '_label -> "Code")
+			@inputText(versionForm("description"), '_label -> "Description")
+			@inputDate(field = versionForm("dueDate"), '_label -> "Date")
+            
+			@select(
+                versionForm("svnBranch.id"), 
+                options(SVNBranch.options), 
+                '_label -> "Branche SVN", '_default -> "-- Choisir une branche SVN --",
+                '_showConstraints -> false
+            )
+        
+        </fieldset>
+        
+    }
+	</div>
+	
+	<div class="modal-footer">
+		@form(routes.Versions.delete(id), 'class -> "pull-left") {
+			<input type="submit" value="Supprimer" class="btn btn-danger">
+		}
+		<button type="button" data-dismiss="modal" class="btn">Annuler</button>
+		<input type="submit" value="Sauvegarder" class="btn btn-primary save">
+	</div>
+    

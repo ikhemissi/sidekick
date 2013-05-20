@@ -1,0 +1,34 @@
+@(id: Long, rubriqueForm: Form[Rubrique])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit rubrique</h1>
+    
+    @form(routes.Rubriques.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(rubriqueForm("code"), '_label -> "Code")
+			@inputText(rubriqueForm("pays"), '_label -> "Pays")
+			@inputText(rubriqueForm("invite"), '_label -> "Invite")
+			@inputText(rubriqueForm("versioning"), '_label -> "Version")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Rubriques.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Rubriques.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

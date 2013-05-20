@@ -1,0 +1,30 @@
+@(backendForm: Form[Backend])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.Backends.save()) {
+        
+        <fieldset>
+        
+            @inputText(backendForm("name"), '_label -> "Nom")
+			@inputText(backendForm("_type"), '_label -> "Type")
+			@inputText(backendForm("description"), '_label -> "Description")
+			@inputText(backendForm("url"), '_label -> "URL")
+			@inputText(backendForm("path"), '_label -> "Chemin")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.Backends.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

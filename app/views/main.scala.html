@@ -1,0 +1,98 @@
+@(content: Html)
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Sidekick</title>
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/logo_16.png")">
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-modal.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")"> 
+    </head>
+    <body>
+        
+        <header class="topbar">
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="brand" href="@routes.App.index()">Sidekick</a>
+						<ul class="nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<i class="icon-folder-open icon-white"></i>
+									Versions
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<li><a href="#">Toutes les versions</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Version courante</a></li>
+									<li><a href="#">Version de maintenance</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<i class="icon-tasks icon-white"></i>
+									Tickets
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<li><a href="#">Tous les tickets</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Mes tickets</a></li>
+									<li><a href="#">Tickets ouverts</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Tests</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<i class="icon-th-list icon-white"></i>
+									Donn&eacute;es
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<li><a href="#">Rubriques</a></li>
+									<li><a href="#">Traitements</a></li>
+									<li><a href="#">Habilitations</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-time icon-white"></i>
+									Temps
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-wrench icon-white"></i>
+									Configuration
+								</a>
+							</li>
+						</ul>
+						<ul class="nav pull-right">
+							<li class="divider-vertical"></li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown">Connexion <strong class="caret"></strong></a>
+								<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+									<form method="post" action="login" accept-charset="UTF-8">
+										<input style="margin-bottom: 15px;" type="text" placeholder="Nom d'utilisateur" id="username" name="username">
+										<input style="margin-bottom: 15px;" type="password" placeholder="Mot de passe" id="password" name="password">
+										<input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+										<label class="string optional" for="user_remember_me"> Se rappeler de moi</label>
+										<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Connexion">
+									</form>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </header>
+        
+        <section id="main">
+            @content
+        </section>
+        
+    </body>
+</html>

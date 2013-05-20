@@ -1,0 +1,27 @@
+# Messages
+
+applications.list.title={0,choice,0#Aucune application trouvée|1#Une application trouvée|1<{0,number,integer} applications trouvées}
+backends.list.title={0,choice,0#Aucun backend trouvé|1#Un backend trouvé|1<{0,number,integer} backends trouvés}
+datas.list.title={0,choice,0#Aucune livraison de données trouvée|1#Une livraison de données trouvée|1<{0,number,integer} livraisons de données trouvées}
+databases.list.title={0,choice,0#Aucune base de donnée trouvée|1#Une base de donnée trouvée|1<{0,number,integer} bases de donnée trouvées}
+datacheckenvironments.list.title={0,choice,0#Aucune vérification par environnement de livraison de données trouvée|1#Une vérification par environnement de livraison de données trouvée|1<{0,number,integer} vérifications par environnement de livraison de données trouvées}
+entitlements.list.title={0,choice,0#Aucune habilitation trouvée|1#Une habilitation trouvée|1<{0,number,integer} habilitations trouvées}
+entitlementchecks.list.title={0,choice,0#Aucune vérification d'habilitation trouvée|1#Une vérification d'habilitation trouvée|1<{0,number,integer} vérifications d'habilitation trouvées}
+entitlementgroups.list.title={0,choice,0#Aucun groupe d'habilitation trouvé|1#Un groupe d'habilitation trouvé|1<{0,number,integer} groupes d'habilitation trouvés}
+entitlementgroupapplications.list.title={0,choice,0#Aucune application d'un groupe d'habilitation trouvée|1#Une application d'un groupe d'habilitation trouvée|1<{0,number,integer} applications d'un groupe d'habilitation trouvées}
+environments.list.title={0,choice,0#Aucun environnement trouvé|1#Un environnement trouvé|1<{0,number,integer} environnements trouvés}
+environmenttypes.list.title={0,choice,0#Aucun type d'environnement trouvé|1#Un type d'environnement trouvé|1<{0,number,integer} types d'environnement trouvés}
+ibmis.list.title={0,choice,0#Aucun serveur IBMi trouvé|1#Un serveur IBMi trouvé|1<{0,number,integer} serveurs IBMi trouvés}
+metrologys.list.title={0,choice,0#Aucun serveur de métrologie trouvé|1#Un serveur de métrologie trouvé|1<{0,number,integer} serveurs de métrologie trouvés}
+projects.list.title={0,choice,0#Aucun projet trouvé|1#Un projet trouvé|1<{0,number,integer} projets trouvés}
+projectexports.list.title={0,choice,0#Aucun export de projet trouvé|1#Un export de projet trouvé|1<{0,number,integer} exports de projet trouvés}
+releases.list.title={0,choice,0#Aucune release trouvée|1#Une release trouvée|1<{0,number,integer} releases trouvées}
+reverseproxys.list.title={0,choice,0#Aucun serveur Apache trouvé|1#Un serveur Apache trouvé|1<{0,number,integer} serveurs Apache trouvés}
+rubriques.list.title={0,choice,0#Aucune rubrique trouvée|1#Une rubrique trouvée|1<{0,number,integer} rubriques trouvées}
+rubriquechecks.list.title={0,choice,0#Aucune vérification de rubrique trouvée|1#Une vérification de rubrique trouvée|1<{0,number,integer} vérifications de rubrique trouvées}
+svnbranchs.list.title={0,choice,0#Aucune branche SVN trouvée|1#Une branche SVN trouvée|1<{0,number,integer} branches SVN trouvées}
+treatments.list.title={0,choice,0#Aucun traitement trouvé|1#Un traitement trouvé|1<{0,number,integer} traitements trouvés}
+treatmentchecks.list.title={0,choice,0#Aucune vérification de traitement trouvée|1#Une vérification de traitement trouvée|1<{0,number,integer} vérifications de traitement trouvées}
+users.list.title={0,choice,0#Aucun utilisateur trouvé|1#Un utilisateur trouvé|1<{0,number,integer} utilisateurs trouvés}
+versions.list.title={0,choice,0#Aucune version trouvée|1#Une version trouvée|1<{0,number,integer} versions trouvées}
+webservers.list.title={0,choice,0#Aucun serveur web trouvé|1#Un serveur web trouvé|1<{0,number,integer} serveurs web trouvés}

@@ -1,0 +1,28 @@
+@(datacheckenvironmentForm: Form[DataCheckEnvironment])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.DataCheckEnvironments.save()) {
+        
+        <fieldset>
+        
+            @inputText(datacheckenvironmentForm("time"), '_label -> "Date")
+			@inputText(datacheckenvironmentForm("status"), '_label -> "Statut")
+			@inputText(datacheckenvironmentForm("error"), '_label -> "Erreur")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.DataCheckEnvironments.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

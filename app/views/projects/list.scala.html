@@ -1,0 +1,154 @@
+@(currentPage: com.avaje.ebean.Page[Project], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Projects.list(newPage, sortBy, order, currentFilter)
+    
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main {
+    
+    <h1 id="homeTitle">@Messages("projects.list.title", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Fait!</strong> @flash.get("success")
+        </div>
+    } 
+
+    <div id="actions">
+        
+        <form action="@link(0, "name")" method="GET">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filtrer par nom...">
+            <input type="submit" id="searchsubmit" value="Filtrer" class="btn primary">
+        </form>
+        
+        <a class="btn success" id="add" href="@routes.Projects.create()">Ajouter project</a>
+        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Rien à afficher</em>
+        </div>
+        
+    } else {
+        
+        <table class="computers zebra-striped">
+            <thead>
+                <tr>
+                    @header("id", "ID")
+                    @header("name", "Nom")
+					@header("_type", "Type")
+					@header("exportname", "Nom d'archive")
+					@header("restart", "Nécessite un redémarrage")
+					@header("svnroot", "Racine SVN")
+					@header("projectname", "Nom de projet")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(project <- currentPage.getList) {
+                    <tr>
+                        <td><a href="@routes.Projects.edit(project.id)">@project.id</a></td>
+                        <td>
+                            @if(project.name == null) {
+                                <em>-</em>
+                            } else {
+                                @project.name
+                            }
+                        </td>
+						<td>
+                            @project._type
+                        </td>
+						<td>
+                            @if(project.exportname == null) {
+                                <em>-</em>
+                            } else {
+                                @project.exportname
+                            }
+                        </td>
+						<td>
+                            @project.restart
+                        </td>
+						<td>
+                            @if(project.svnroot == null) {
+                                <em>-</em>
+                            } else {
+                                @project.svnroot
+                            }
+                        </td>
+						<td>
+                            @if(project.svnroot == null) {
+                                <em>-</em>
+                            } else {
+                                @project.svnroot
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        <div id="pagination" class="pagination">
+            <ul>
+                @if(currentPage.hasPrev) {
+                    <li class="prev">
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Précédent</a>
+                    </li>
+                } else {
+                    <li class="prev disabled">
+                        <a>&larr; Précédent</a>
+                    </li>
+                }
+                <li class="current">
+                    <a>Affichage de @currentPage.getDisplayXtoYofZ(" - "," sur ")</a>
+                </li>
+                @if(currentPage.hasNext) {
+                    <li class="next">
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Suivant &rarr;</a>
+                    </li>
+                } else {
+                    <li class="next disabled">
+                        <a>Suivant &rarr;</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        
+    }
+        
+}
+
+            

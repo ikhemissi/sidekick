@@ -1,0 +1,26 @@
+@(svnbranchForm: Form[SVNBranch])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.SVNBranchs.save()) {
+        
+        <fieldset>
+        
+            @inputText(svnbranchForm("root"), '_label -> "Racine")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.SVNBranchs.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

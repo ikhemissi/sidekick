@@ -1,0 +1,34 @@
+@(id: Long, projectexportForm: Form[ProjectExport])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit projectexport</h1>
+    
+    @form(routes.ProjectExports.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(projectexportForm("num"), '_label -> "Numéro")
+			@inputText(projectexportForm("exportDate"), '_label -> "Date d'export")
+			@inputText(projectexportForm("svnversion"), '_label -> "Version SVN")
+			@inputText(projectexportForm("cancelled"), '_label -> "Annulé")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.ProjectExports.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.ProjectExports.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

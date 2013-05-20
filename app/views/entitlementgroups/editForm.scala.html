@@ -1,0 +1,32 @@
+@(id: Long, entitlementgroupForm: Form[EntitlementGroup])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit entitlementgroup</h1>
+    
+    @form(routes.EntitlementGroups.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(entitlementgroupForm("name"), '_label -> "Nom")
+			@inputText(entitlementgroupForm("versioning"), '_label -> "Version")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.EntitlementGroups.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.EntitlementGroups.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}

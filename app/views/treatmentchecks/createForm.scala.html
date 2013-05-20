@@ -1,0 +1,26 @@
+@(treatmentcheckForm: Form[TreatmentCheck])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Ajouter</h1>
+    
+    @form(routes.TreatmentChecks.save()) {
+        
+        <fieldset>
+        
+            @inputText(treatmentcheckForm("date"), '_label -> "Date")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Créer" class="btn primary"> ou 
+            <a href="@routes.TreatmentChecks.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+}

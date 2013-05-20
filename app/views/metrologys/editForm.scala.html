@@ -1,0 +1,35 @@
+@(id: Long, metrologyForm: Form[Metrology])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Edit metrology</h1>
+    
+    @form(routes.Metrologys.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(metrologyForm("name"), '_label -> "Nom")
+			@inputText(metrologyForm("_type"), '_label -> "Type")
+			@inputText(metrologyForm("url"), '_label -> "URL")
+			@inputText(metrologyForm("path"), '_label -> "Chemin")
+			@inputText(metrologyForm("description"), '_label -> "Description")
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Sauvegarder" class="btn primary"> ou 
+            <a href="@routes.Metrologys.list()" class="btn">Annuler</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Metrologys.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Supprimer" class="btn danger">
+    }
+    
+}
