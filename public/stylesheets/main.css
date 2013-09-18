@@ -1,0 +1,86 @@
+html {
+    background: #eee;
+}
+
+header h1 {
+    padding: 0.4em 1.1em;
+    color: white;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+section#main {
+    position: relative;
+    padding: 5em 2em;
+    border-bottom: 1px solid #ccc;
+    min-height: 600px;
+} 
+
+section#main .topRight {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+}
+
+#actions {
+    position: relative;
+}
+
+#actions #add {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#pagination {
+    position: relative;
+}
+
+#pagination ul {
+    position: absolute;
+    right: 0;
+}
+
+#pagination ul .current a {
+    color: #666;
+}
+
+.accordion-group.active {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0;
+	outline: thin dotted 9;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+
+.hero-unit {
+	padding: 5px 20px;
+	margin: 0px;
+	width: 95%;
+}
+
+#searchbox {
+	margin-bottom: 0px;
+}
+
+/* Change the docs' brand */
+body  .navbar .brand {
+  padding-left: 0;
+  margin-right: 30px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+body  .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+.accordion-group {
+	border: 1px solid rgb(197, 193, 193);
+}
