@@ -10,7 +10,8 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       javaCore,
       javaJdbc,
-      javaEbean
+      javaEbean,
+      "net.sf.jt400" % "jt400" % "6.7"
     )
 
     val main = play.Project(appName, appVersion, appDependencies).settings(
