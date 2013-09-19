@@ -6,7 +6,6 @@ object ApplicationBuild extends Build {
 
     val appName         = "sidekick"
     val appVersion      = "1.0"
-
     val appDependencies = Seq(
       javaCore,
       javaJdbc,
